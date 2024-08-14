@@ -9,6 +9,14 @@ self-update library for go
 It checks the version in the public github repo and updates the application, it only works on single executable (binaries),
 you can also manually download and update the file if you want, `tar.gz` and `.zip` archives are supported, file extraction is automatic, tested on `cli` and [wails](https://github.com/wailsapp/wails) apps.
 
+## Platforms
+
+| Platform |  Status    |
+| :---:   | :---: |
+| Linux | ✅    |
+| Window | Testing |
+| Mac    | Not Tested |
+
 ## Example
 
 ```go
