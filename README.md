@@ -1,5 +1,6 @@
 # Goself
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/sunaipa5/reqtor.svg)](https://pkg.go.dev/github.com/sunaipa5/goself)
 self-update library for go
 
 ## How to work
