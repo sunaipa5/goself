@@ -5,8 +5,8 @@ type Options struct {
 	Repo           string //Github repo name
 	CurrentVersion string //Your application current version
 	PackageName    string //Installation package name
-	TagEnd         string //Example: window_amd64.tar.gz
-	TagEnd2        string //Option 2 if 'TagEnd' is not found
+	AssetEnd       string //Example: window_amd64.tar.gz
+	AssetEnd2      string //Option 2 if 'AssetEnd' is not found
 	AppName        string //Your executable app name
 	TmpFolderName  string //Folder where the executable will be temporarily hosted Default: .update-tmp
 }

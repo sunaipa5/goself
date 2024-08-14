@@ -25,8 +25,8 @@ func CheckUpdate() string {
 		Author:         "yourGithubName",
 		Repo:           "yourGithubRepoName",
 		CurrentVersion: "0.0.1",
-		TagEnd:         "linux_amd64.tar.gz",
-                TagEnd2:        "linux_amd64.zip", //not mandatory, option 2 when tagEnd is not found
+		AssetEnd:         "linux_amd64.tar.gz",
+                AssetEnd2:        "linux_amd64.zip", //not mandatory, option 2 when AssetEnd is not found
 		AppName:        "yourExecutableName",
 	}
 
@@ -60,8 +60,8 @@ func (a *App) CheckUpdate() string {
 		Author:         "yourGithubName",
 		Repo:           "yourGithubRepoName",
 		CurrentVersion: "0.0.1",
-		TagEnd:         "linux_amd64.tar.gz",
-                TagEnd2:        "linux_amd64.zip", //not mandatory, option 2 when tagEnd is not found
+		AssetEnd:         "linux_amd64.tar.gz",
+                AssetEnd2:        "linux_amd64.zip", //not mandatory, option 2 when AssetEnd is not found
 		AppName:        "yourExecutableName",
 	}
 

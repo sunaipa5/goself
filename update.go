@@ -39,7 +39,7 @@ func (options Options) CheckUpdate() (bool, Release) {
 
 }
 
-func (options Options) findSource(release Release, tagEnd string) (int, Source) {
+func (options Options) findSource(release Release, AssetEnd string) (int, Source) {
 	var source Source
 	count := 0
 	for _, asset := range release.Assets {
@@ -47,7 +47,7 @@ func (options Options) findSource(release Release, tagEnd string) (int, Source) 
 			source.Name += " "
 			source.Download_Url += " "
 		}
-		if strings.HasSuffix(asset.Name, tagEnd) {
+		if strings.HasSuffix(asset.Name, AssetEnd) {
 			count++
 			source.Name += asset.Name
 			source.Download_Url += asset.Download_Url
@@ -58,25 +58,25 @@ func (options Options) findSource(release Release, tagEnd string) (int, Source) 
 }
 
 func (options Options) DownloadUpdate(release Release) error {
-	if options.TagEnd == "" {
-		return fmt.Errorf("TagEnd require")
+	if options.AssetEnd == "" {
+		return fmt.Errorf("AssetEnd require")
 	}
 
-	count, source := options.findSource(release, options.TagEnd)
+	count, source := options.findSource(release, options.AssetEnd)
 
 	if count > 1 {
-		return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
+		return fmt.Errorf("multiple source found! please change 'AssetEnd': %v", source)
 	} else {
-		if options.TagEnd2 == "" {
-			return fmt.Errorf("not found any source! TagEnd2 not found, can't search for another source")
+		if options.AssetEnd2 == "" {
+			return fmt.Errorf("not found any source! AssetEnd2 not found, can't search for another source")
 		}
 
-		count, source = options.findSource(release, options.TagEnd2)
+		count, source = options.findSource(release, options.AssetEnd2)
 
 		if count > 1 {
-			return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
+			return fmt.Errorf("multiple source found! please change 'AssetEnd': %v", source)
 		} else if count < 1 {
-			return fmt.Errorf("not found any source! plese change 'TagEnd'")
+			return fmt.Errorf("not found any source! plese change 'AssetEnd'")
 		}
 	}
 
