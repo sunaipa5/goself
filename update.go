@@ -66,7 +66,7 @@ func (options Options) DownloadUpdate(release Release) error {
 
 	if count > 1 {
 		return fmt.Errorf("multiple source found! please change 'AssetEnd': %v", source)
-	} else {
+	} else if count < 1 {
 		if options.AssetEnd2 == "" {
 			return fmt.Errorf("not found any source! AssetEnd2 not found, can't search for another source")
 		}
