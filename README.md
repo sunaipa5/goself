@@ -11,11 +11,11 @@ you can also manually download and update the file if you want, `tar.gz` and `.z
 
 ## Platforms
 
-| Platform |  Status    |
-| :---:   | :---: |
-| Linux | ✅    |
-| Window | Testing |
-| Mac    | Not Tested |
+| Platform |   Status   |
+| :------: | :--------: |
+|  Linux   |     ✅     |
+|  Window  |     ✅     |
+|   Mac    | Not Tested |
 
 ## Example
 
