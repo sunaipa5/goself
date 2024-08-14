@@ -5,7 +5,7 @@ self-update library for go
 ## How to work
 
 It checks the version in the public github repo and updates the application, it only works on single executable (binaries),
-you can also manually download and update the file if you want, tar.gz and .zip archives are supported, file extraction is automatic, tested on cli and wails apps.
+you can also manually download and update the file if you want, `tar.gz` and `.zip` archives are supported, file extraction is automatic, tested on `cli` and `wails` apps.
 
 ## Example
 
