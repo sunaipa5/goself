@@ -14,7 +14,7 @@ you can also manually download and update the file if you want, `tar.gz` and `.z
 | Platform |   Status   |
 | :------: | :--------: |
 |  Linux   |     ✅     |
-|  Window  |     ✅     |
+| Windows  |     ✅     |
 |   Mac    | Not Tested |
 
 ## Example
