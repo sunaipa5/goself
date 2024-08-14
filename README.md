@@ -1,12 +1,13 @@
 # Goself
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/sunaipa5/reqtor.svg)](https://pkg.go.dev/github.com/sunaipa5/goself)
+
 self-update library for go
 
 ## How to work
 
 It checks the version in the public github repo and updates the application, it only works on single executable (binaries),
-you can also manually download and update the file if you want, `tar.gz` and `.zip` archives are supported, file extraction is automatic, tested on `cli` and `wails` apps.
+you can also manually download and update the file if you want, `tar.gz` and `.zip` archives are supported, file extraction is automatic, tested on `cli` and [wails](https://github.com/wailsapp/wails) apps.
 
 ## Example
 
@@ -43,7 +44,7 @@ func CheckUpdate() string {
 }
 ```
 
-## Wails Example
+## [Wails](https://github.com/wailsapp/wails) Example
 
 ```go
 func (a *App) CheckUpdate() string {
