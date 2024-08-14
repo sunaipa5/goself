@@ -59,25 +59,25 @@ func (options Options) findSource(release Release, tagEnd string) (int, Source) 
 
 func (options Options) DownloadUpdate(release Release) error {
 	if options.TagEnd == "" {
-		return fmt.Errorf("TagEnd require!")
+		return fmt.Errorf("TagEnd require")
 	}
 
 	count, source := options.findSource(release, options.TagEnd)
 
 	if count > 1 {
 		return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
-	}
+	} else {
+		if options.TagEnd2 == "" {
+			return fmt.Errorf("not found any source! TagEnd2 not found, can't search for another source")
+		}
 
-	if options.TagEnd2 == "" {
-		return fmt.Errorf("not found any source! TagEnd2 not found, can't search for another source!")
-	}
+		count, source = options.findSource(release, options.TagEnd2)
 
-	count, source = options.findSource(release, options.TagEnd2)
-
-	if count > 1 {
-		return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
-	} else if count < 1 {
-		return fmt.Errorf("not found any source! plese change 'TagEnd'")
+		if count > 1 {
+			return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
+		} else if count < 1 {
+			return fmt.Errorf("not found any source! plese change 'TagEnd'")
+		}
 	}
 
 	file, err := Download_Update_File(source.Download_Url)
