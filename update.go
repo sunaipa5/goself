@@ -1,4 +1,4 @@
-package updater
+package goself
 
 import (
 	"encoding/json"
@@ -39,7 +39,7 @@ func (options Options) CheckUpdate() (bool, Release) {
 
 }
 
-func (options Options) findSource(release Release,tagEnd string) (int, Source){
+func (options Options) findSource(release Release, tagEnd string) (int, Source) {
 	var source Source
 	count := 0
 	for _, asset := range release.Assets {
@@ -58,39 +58,38 @@ func (options Options) findSource(release Release,tagEnd string) (int, Source){
 }
 
 func (options Options) DownloadUpdate(release Release) error {
-	if options.TagEnd == ""{
+	if options.TagEnd == "" {
 		return fmt.Errorf("TagEnd require!")
 	}
 
-    count, source := options.findSource(release,options.TagEnd)
+	count, source := options.findSource(release, options.TagEnd)
 
 	if count > 1 {
-		return fmt.Errorf("multiple source found! please change 'TagEnd': %v",source)
+		return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
 	}
 
-	if options.TagEnd2 == ""{
+	if options.TagEnd2 == "" {
 		return fmt.Errorf("not found any source! TagEnd2 not found, can't search for another source!")
 	}
 
-	count, source = options.findSource(release,options.TagEnd2)
+	count, source = options.findSource(release, options.TagEnd2)
 
 	if count > 1 {
-		return fmt.Errorf("multiple source found! please change 'TagEnd': %v",source)
+		return fmt.Errorf("multiple source found! please change 'TagEnd': %v", source)
 	} else if count < 1 {
 		return fmt.Errorf("not found any source! plese change 'TagEnd'")
 	}
 
-	file,err := Download_Update_File(source.Download_Url)
+	file, err := Download_Update_File(source.Download_Url)
 	if err != nil {
-		return fmt.Errorf("file cannot download: %v",err)
+		return fmt.Errorf("file cannot download: %v", err)
 	}
 
 	if strings.HasSuffix(source.Name, ".zip") {
 		options.ZipExtractor(file)
-	}else if strings.HasSuffix(source.Name, ".tar.gz"){
+	} else if strings.HasSuffix(source.Name, ".tar.gz") {
 		options.Targz_extractor(file)
 	}
-	
 
 	return nil
 }
@@ -110,12 +109,12 @@ func (options Options) ApplyUpdate() error {
 func (options Options) StartUpdate() error {
 
 	tmpFolderName := options.TmpFolderName
-	if tmpFolderName == ""{
+	if tmpFolderName == "" {
 		options.TmpFolderName = ".update-tmp"
 	}
 
 	var err error
-	newBinary :=  options.TmpFolderName +"/" + options.AppName
+	newBinary := options.TmpFolderName + "/" + options.AppName
 
 	err = os.Chmod(newBinary, 0755)
 	if err != nil {
@@ -136,11 +135,11 @@ func (options Options) StartUpdate() error {
 // Close old executable file
 func (options Options) EndUpdate() error {
 	tmpFolderName := options.TmpFolderName
-	if tmpFolderName == ""{
+	if tmpFolderName == "" {
 		options.TmpFolderName = ".update-tmp"
 	}
 
-	newBinary := options.TmpFolderName+"/" + options.AppName
+	newBinary := options.TmpFolderName + "/" + options.AppName
 	oldBinary := "./" + options.AppName
 
 	bakPath := oldBinary + ".bak"

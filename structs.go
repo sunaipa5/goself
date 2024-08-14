@@ -1,4 +1,4 @@
-package updater
+package goself
 
 type Options struct {
 	Author         string //Github username
@@ -7,7 +7,7 @@ type Options struct {
 	PackageName    string //Installation package name
 	TagEnd         string //Example: window_amd64.tar.gz
 	TagEnd2        string //Option 2 if 'TagEnd' is not found
-	AppName 	   string //Your executable app name
+	AppName        string //Your executable app name
 	TmpFolderName  string //Folder where the executable will be temporarily hosted Default: .update-tmp
 }
 
@@ -22,6 +22,6 @@ type Assets struct {
 }
 
 type Source struct {
-	Name string
+	Name         string
 	Download_Url string
 }

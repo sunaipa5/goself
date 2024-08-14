@@ -1,15 +1,15 @@
-package updater
+package goself
 
 import (
 	"archive/tar"
 	"archive/zip"
+	"bytes"
 	"compress/gzip"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
-	"bytes"
 )
 
 func Download_Update_File(url string) (io.Reader, error) {
@@ -50,7 +50,7 @@ func (options Options) Targz_extractor(file io.Reader) error {
 		}
 
 		target := options.TmpFolderName+"/"+options.AppName
-		
+
 		if header.Typeflag == tar.TypeDir {
 			if err := os.MkdirAll(target, os.ModePerm); err != nil {
 				return fmt.Errorf("error creating directory: %v", err)
